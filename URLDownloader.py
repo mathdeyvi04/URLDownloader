@@ -19,7 +19,7 @@ class URLDownloader:
 
         ydl_opts = {
             "outtmpl": "./%(title)s.%(ext)s",
-            "format": "bestvideo+bestaudio/best",
+            "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]",
             "merge_output_format": "mp4",
         } if not only_audio else {
             "outtmpl": "./%(title)s.%(ext)s",
@@ -38,7 +38,7 @@ class URLDownloader:
         """
 
         """
-        self._init_download("https://www.youtube.com/watch?v=YxFFfQpdUME", True)
+        self._init_download("https://www.youtube.com/watch?v=YxFFfQpdUME")
 
         pass
 

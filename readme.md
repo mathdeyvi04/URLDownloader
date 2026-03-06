@@ -1,32 +1,15 @@
 # 🚀 URLDownloader
 
 Um downloader de YouTube robusto, desenvolvido em Python, focado em performance e controle total via terminal. 
-Este projeto utiliza o poder do `yt-dlp` integrado nativamente e 
+Este projeto utiliza o poder do `yt-dlp` e 
 um gerenciador de threads para permitir múltiplos downloads simultâneos sem travar a interface.
 
 ---
 ## 🎯 Objetivo do Projeto
-Criar uma ferramenta de linha de comando (CLI) que permita ao usuário baixar vídeos ou apenas áudios do YouTube, escolhendo a qualidade desejada.
+Criar uma ferramenta de linha de comando (CLI) que permita ao usuário baixar vídeos ou apenas áudios do YouTube na máxima qualidade possível.
 
 ---
-
-## 🛠️ Dependências e Requisitos
-
-### 1. Requisitos do Sistema
-
-* **Python 3.8+**
-* **FFmpeg**: Essencial para a fusão de fluxos de vídeo/áudio e conversão para MP3.
-  * *Linux:* `sudo apt install ffmpeg`
-
-### 2. Bibliotecas Python
-Instale as dependências necessárias via pip:
-
-```
-pip install yt-dlp 
-```
-
----
-#💡 Insights Técnicos e Arquitetura
+# 💡 Insights Técnicos e Arquitetura
 
 Para garantir que este projeto seja de alto nível, aplicamos os seguintes conceitos:
 
@@ -46,23 +29,3 @@ Muitos evitam threads em Python devido ao GIL, mas neste projeto ele não é um 
 Em vez de ler a saída do terminal (stdout) como um processo externo faria, usamos os progress_hooks nativos do yt-dlp.
 
 Isso nos permite capturar um dicionário de dados preciso (porcentagem, velocidade, ETA) e passá-lo para atualizar as barras de progresso sem flicker (tremulação) na tela.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -115,6 +115,7 @@ class URLDownloader:
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([link])
 
+            print("-- Download Bem Sucedido")
             return True
 
         except Exception as error:
@@ -139,6 +140,7 @@ class URLDownloader:
                 self._current_downloads,
             )
         ) and self._current_downloads:
+            self._next_id = 0
             self._current_downloads.clear()
 
     def commit_download(self, url: str, only_audio: bool = False) -> int:
@@ -206,7 +208,6 @@ class URLDownloader:
 
         return "\n".join(lines)
 
-
     def mainloop(self) -> None:
         """
         @brief Loop principal de monitoramento da aplicação.
@@ -221,6 +222,7 @@ class URLDownloader:
         def refresh():
             while self.show_downloads:
                 sleep(1)
+                self._clear_historic_downloads()
                 session.app.invalidate()
 
         session = PromptSession(bottom_toolbar=self.show_historic_downloads)
@@ -240,8 +242,10 @@ class URLDownloader:
                 self.commit_download(input_link, input_audio)
 
         except KeyboardInterrupt:
+            self.show_downloads = False
             self._executor.shutdown(wait=False)
             exit()
 
 if __name__ == "__main__":
     URLDownloader().mainloop()
+    # https://www.youtube.com/watch?v=zBjJUV-lzHo&pp=ygUOdmlkb2UgZGUgMSBtaW4%3D # Vídeo de 1 min para testes
